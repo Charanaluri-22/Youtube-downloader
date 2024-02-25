@@ -1,0 +1,57 @@
+<!-- error.html -->
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Error</title>
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
+      integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN"
+      crossorigin="anonymous"
+    />
+    <style>
+      /* Custom styles */
+      .container {
+        max-width: 600px; /* Adjust max-width as per your design */
+        margin: auto;
+        padding: 20px; /* Increased padding */
+        margin-top: 50px;
+      }
+
+      .card-title {
+        color: #f44336; /* Error title color */
+        font-size: 2rem; /* Increased font size */
+        font-weight: bold;
+        text-align: center;
+        margin-bottom: 20px; /* Increased margin bottom */
+      }
+
+      .btn-primary {
+        background-color: #f44336 !important; /* Error button color */
+        border-color: #f44336 !important; /* Error button border color */
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <div class="card">
+        <div class="card-body">
+          <h1 class="card-title">Error!</h1>
+          <p class="text-center">"{{message}}"Please try again later.</p>
+          <div class="text-center">
+            <a href="/" class="btn btn-primary">Back to Home</a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Bootstrap JS -->
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-KyZXEAg3QhqLMpG8r+Knujsl5+z5G5qZGb4Pf3cxrBwc2x0Uod2c+mkjcWd5l2+G"
+      crossorigin="anonymous"
+    ></script>
+  </body>
+</html>
