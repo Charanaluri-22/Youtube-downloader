@@ -19,6 +19,7 @@ def download():
 
         # Open file dialog to select download directory
         root = Tk()
+        root.wm_attributes('-topmost', True) 
         root.withdraw()  # Hide Tkinter window
         download_dir = filedialog.askdirectory()
         root.destroy()  # Close Tkinter window
