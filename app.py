@@ -15,22 +15,27 @@ def download():
     video_url = request.form['video_url']
     try:
         yt = YouTube(video_url)
-        high_stream = yt.streams.filter(progressive=True, file_extension='mp4').get_highest_resolution()
-
+        
+        # Get the highest resolution stream
+        high_res_stream = yt.streams.get_highest_resolution()
+        
+        # If no progressive stream is available, get the highest quality adaptive stream
+        if not high_res_stream:
+            high_res_stream = yt.streams.filter(adaptive=True, file_extension='mp4', only_video=True).order_by('resolution').desc().first()
+        
         # Open file dialog to select download directory
         root = Tk()
-        root.wm_attributes('-topmost', True) 
+        root.wm_attributes('-topmost', True)
         root.withdraw()  # Hide Tkinter window
         download_dir = filedialog.askdirectory()
         root.destroy()  # Close Tkinter window
-
+        
         if download_dir:
             # Download the video to the selected directory
-            high_stream.download(download_dir)
-            return render_template('success.html', message=high_stream.title,download_dir=download_dir)
+            high_res_stream.download(download_dir)
+            return render_template('success.html', message=high_res_stream.title, download_dir=download_dir)
         else:
             return render_template('error.html', message="No download directory selected.")
-
     except Exception as e:
         return render_template("error.html", message="Error: " + str(e))
 
